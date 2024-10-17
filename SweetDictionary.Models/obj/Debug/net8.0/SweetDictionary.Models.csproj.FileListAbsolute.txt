@@ -1,0 +1,15 @@
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/bin/Debug/net8.0/SweetDictionary.Models.deps.json
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/bin/Debug/net8.0/SweetDictionary.Models.dll
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/bin/Debug/net8.0/SweetDictionary.Models.pdb
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/bin/Debug/net8.0/Core.dll
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/bin/Debug/net8.0/Core.pdb
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/SweetDictionary.Models.csproj.AssemblyReference.cache
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/SweetDictionary.Models.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/SweetDictionary.Models.AssemblyInfoInputs.cache
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/SweetDictionary.Models.AssemblyInfo.cs
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/SweetDictionary.Models.csproj.CoreCompileInputs.cache
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/SweetDic.2A4D1AC1.Up2Date
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/SweetDictionary.Models.dll
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/refint/SweetDictionary.Models.dll
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/SweetDictionary.Models.pdb
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/ref/SweetDictionary.Models.dll

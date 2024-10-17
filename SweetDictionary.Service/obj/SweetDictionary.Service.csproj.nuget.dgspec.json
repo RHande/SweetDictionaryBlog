@@ -1,0 +1,280 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Service/SweetDictionary.Service.csproj": {}
+  },
+  "projects": {
+    "/Users/hande/RiderProjects/SweetDictionary/Core/Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/hande/RiderProjects/SweetDictionary/Core/Core.csproj",
+        "projectName": "Core",
+        "projectPath": "/Users/hande/RiderProjects/SweetDictionary/Core/Core.csproj",
+        "packagesPath": "/Users/hande/.nuget/packages/",
+        "outputPath": "/Users/hande/RiderProjects/SweetDictionary/Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/hande/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/SweetDictionary.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/SweetDictionary.Models.csproj",
+        "projectName": "SweetDictionary.Models",
+        "projectPath": "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/SweetDictionary.Models.csproj",
+        "packagesPath": "/Users/hande/.nuget/packages/",
+        "outputPath": "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/hande/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/hande/RiderProjects/SweetDictionary/Core/Core.csproj": {
+                "projectPath": "/Users/hande/RiderProjects/SweetDictionary/Core/Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Repository/SweetDictionary.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Repository/SweetDictionary.Repository.csproj",
+        "projectName": "SweetDictionary.Repository",
+        "projectPath": "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Repository/SweetDictionary.Repository.csproj",
+        "packagesPath": "/Users/hande/.nuget/packages/",
+        "outputPath": "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Repository/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/hande/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/SweetDictionary.Models.csproj": {
+                "projectPath": "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/SweetDictionary.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Service/SweetDictionary.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Service/SweetDictionary.Service.csproj",
+        "projectName": "SweetDictionary.Service",
+        "projectPath": "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Service/SweetDictionary.Service.csproj",
+        "packagesPath": "/Users/hande/.nuget/packages/",
+        "outputPath": "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Service/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/hande/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/hande/RiderProjects/SweetDictionary/Core/Core.csproj": {
+                "projectPath": "/Users/hande/RiderProjects/SweetDictionary/Core/Core.csproj"
+              },
+              "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/SweetDictionary.Models.csproj": {
+                "projectPath": "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/SweetDictionary.Models.csproj"
+              },
+              "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Repository/SweetDictionary.Repository.csproj": {
+                "projectPath": "/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Repository/SweetDictionary.Repository.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "NB1IMasALqJDdqUIR5ivCvBwHS0GIHhpFCHYSLOW19U=",
+  "Source": "SweetDictionary.WebApi",
+  "BasePath": "_content/SweetDictionary.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
