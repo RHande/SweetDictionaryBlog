@@ -17,8 +17,8 @@ public class CommentConfiguration : IEntityTypeConfiguration<Comment>
         builder.Property(c => c.UserId).HasColumnName("UserId");
 
 
-        builder.HasOne(c => c.Post).WithMany(p => p.Comments).HasForeignKey(c => c.PostId).OnDelete(DeleteBehavior.ClientSetNull);
-        builder.HasOne(c => c.User).WithMany(u => u.Comments).HasForeignKey(c => c.UserId).OnDelete(DeleteBehavior.ClientSetNull);
+        builder.HasOne(c => c.Post).WithMany(p => p.Comments).HasForeignKey(c => c.PostId).OnDelete(DeleteBehavior.NoAction);
+        builder.HasOne(c => c.User).WithMany(u => u.Comments).HasForeignKey(c => c.UserId).OnDelete(DeleteBehavior.NoAction);
         
     }
 }

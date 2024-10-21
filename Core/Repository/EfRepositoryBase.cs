@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +8,7 @@ public abstract class EfRepositoryBase <TContext ,TEntity, TId> : IRepository<TE
 where TEntity : Entity<TId>, new()
 where TContext : DbContext
 {
+    private IRepository<TEntity, TId> _repositoryImplementation;
     protected TContext Context { get; }//Sadece miras aldığı sınıflar erişebilsin diye protected yaptık.
     
     public EfRepositoryBase(TContext context)
@@ -42,9 +44,15 @@ where TContext : DbContext
     {
         return Context.Set<TEntity>().Find(id);
     }
+    
 
-    public List<TEntity> GetAll()
+    public List<TEntity> GetAll(Expression<Func<TEntity, bool>>? filter = null)
     {
-        return Context.Set<TEntity>().ToList();
+        IQueryable<TEntity> query = Context.Set<TEntity>();
+        if (filter is not null)
+        {
+            query = query.Where(filter);
+        }
+        return query.ToList();
     }
 }

@@ -17,3 +17,4 @@
 /Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Service/obj/Debug/net8.0/refint/SweetDictionary.Service.dll
 /Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Service/obj/Debug/net8.0/SweetDictionary.Service.pdb
 /Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Service/obj/Debug/net8.0/ref/SweetDictionary.Service.dll
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Service/obj/Debug/net8.0/SweetDictionary.Service.sourcelink.json

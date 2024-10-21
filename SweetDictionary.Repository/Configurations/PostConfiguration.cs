@@ -18,8 +18,8 @@ public class PostConfiguration: IEntityTypeConfiguration<Post>
         builder.Property(p => p.CategoryId).HasColumnName("CategoryId");
         
         
-        builder.HasOne(p => p.Author).WithMany(u => u.Posts).HasForeignKey(p => p.AuthorId).OnDelete(DeleteBehavior.ClientSetNull);
-        builder.HasMany(p => p.Comments).WithOne(c => c.Post).HasForeignKey(c => c.PostId).OnDelete(DeleteBehavior.ClientSetNull);
+        builder.HasOne(p => p.Author).WithMany(u => u.Posts).HasForeignKey(p => p.AuthorId).OnDelete(DeleteBehavior.NoAction);
+        builder.HasMany(p => p.Comments).WithOne(c => c.Post).HasForeignKey(c => c.PostId).OnDelete(DeleteBehavior.NoAction);
         
         builder.Navigation(p => p.Category).AutoInclude();
         builder.Navigation(p => p.Author).AutoInclude();

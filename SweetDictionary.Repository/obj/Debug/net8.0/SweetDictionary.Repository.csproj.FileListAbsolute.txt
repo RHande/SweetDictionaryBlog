@@ -15,3 +15,4 @@
 /Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Repository/obj/Debug/net8.0/refint/SweetDictionary.Repository.dll
 /Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Repository/obj/Debug/net8.0/SweetDictionary.Repository.pdb
 /Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Repository/obj/Debug/net8.0/ref/SweetDictionary.Repository.dll
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Repository/obj/Debug/net8.0/SweetDictionary.Repository.sourcelink.json

@@ -13,3 +13,4 @@
 /Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/refint/SweetDictionary.Models.dll
 /Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/SweetDictionary.Models.pdb
 /Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/ref/SweetDictionary.Models.dll
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.Models/obj/Debug/net8.0/SweetDictionary.Models.sourcelink.json

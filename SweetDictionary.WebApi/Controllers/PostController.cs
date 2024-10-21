@@ -31,5 +31,41 @@ public class PostController(IPostService _postService):ControllerBase
         var result = _postService.GetById(id);
         return Ok(result);
     }
+
+    [HttpPut("update")]
+    public IActionResult Update([FromBody] UpdatePostRequestDto dto)
+    {
+        var result = _postService.Update(dto);
+        return Ok(result);
+    }
+    
+    [HttpDelete("delete/{id:guid}")]
+    public IActionResult Delete([FromRoute]Guid id)
+    {
+        var result = _postService.Delete(id);
+        return Ok(result);
+    }
+
+    [HttpGet("getallbycategoryid/{id:int}")]
+    public IActionResult GetAllByCategoryId(int id)
+    {
+        var result = _postService.GetAllByCategoryId(id);
+        return Ok(result);
+    }
+    
+    
+    [HttpGet("getallbyauthorid/{id:long}")]
+    public IActionResult GetAllByAuthorId(long id)
+    {
+        var result = _postService.GetAllByAuthorId(id);
+        return Ok(result);
+    }
+    
+    [HttpGet("getallbytitlecontains/{title}")]
+    public IActionResult GetAllByTitleContains(string title)
+    {
+        var result = _postService.GetAllByTitleContains(title);
+        return Ok(result);
+    }
     
 }

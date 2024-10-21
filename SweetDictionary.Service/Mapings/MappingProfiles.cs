@@ -11,5 +11,7 @@ public class MappingProfiles : Profile
     {
         CreateMap<CreatePostRequestDto,Post>().ReverseMap();
         CreateMap<Post, PostResponseDto>();
+        CreateMap<UpdatePostRequestDto, Post>().ReverseMap();
+        
     }
 }

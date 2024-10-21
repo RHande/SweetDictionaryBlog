@@ -16,7 +16,7 @@ public class CategoryConfigiration : IEntityTypeConfiguration<Category>
         builder.HasMany(x => x.Posts);
         builder.Property(c => c.Name).IsRequired().HasMaxLength(50);
         
-        builder.HasMany(c => c.Posts).WithOne(p => p.Category).HasForeignKey(p => p.CategoryId).OnDelete(DeleteBehavior.ClientSetNull);
+        builder.HasMany(c => c.Posts).WithOne(p => p.Category).HasForeignKey(p => p.CategoryId).OnDelete(DeleteBehavior.NoAction);
 
         builder.HasData(
             new Category()

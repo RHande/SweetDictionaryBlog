@@ -5,6 +5,7 @@ using SweetDictionary.Repository.Repositories.Concretes;
 using SweetDictionary.Service.Abstracts;
 using SweetDictionary.Service.Concretes;
 using SweetDictionary.Service.Mapings;
+using SweetDictionary.Service.Rules;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddScoped<IPostRepository, EfPostRepository>();
+builder.Services.AddScoped<PostBusinessRules>();
 builder.Services.AddDbContext<BaseDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
