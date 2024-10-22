@@ -1,4 +1,5 @@
 using AutoMapper;
+using SweetDictionary.Models.Categories;
 using SweetDictionary.Models.Entities;
 using SweetDictionary.Models.Posts;
 
@@ -12,6 +13,10 @@ public class MappingProfiles : Profile
         CreateMap<CreatePostRequestDto,Post>().ReverseMap();
         CreateMap<Post, PostResponseDto>();
         CreateMap<UpdatePostRequestDto, Post>().ReverseMap();
+        
+        CreateMap<CreateCategoryRequestDto, Category>().ReverseMap();
+        CreateMap<Category, CategoryResponseDto>();
+        CreateMap<UpdateCategoryRequestDto, Category>().ReverseMap();
         
     }
 }

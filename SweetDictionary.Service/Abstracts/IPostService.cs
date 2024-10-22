@@ -12,7 +12,7 @@ public interface IPostService
     ReturnModel<PostResponseDto> Update(UpdatePostRequestDto dto);
     ReturnModel<string> Delete(Guid id);
     ReturnModel<List<PostResponseDto>> GetAllByCategoryId(int CategoryId);
-    ReturnModel<List<PostResponseDto>> GetAllByAuthorId(long AuthorId);
+    ReturnModel<List<PostResponseDto>> GetAllByAuthorId(string AuthorId);
     ReturnModel<List<PostResponseDto>> GetAllByTitleContains(string text);
 
 }

@@ -1,3 +1,9 @@
 namespace SweetDictionary.Models.Comments;
 
-public sealed record CommentResponseDto(Guid Id, string Text, Guid PostId, long UserId);
+public sealed record CommentResponseDto
+{
+    public Guid Id { get; init; }
+    public string Text { get; init; }
+    public Guid PostId { get; init; }
+    public long UserId { get; init; }
+}

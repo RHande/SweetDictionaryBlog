@@ -1,3 +1,7 @@
 namespace SweetDictionary.Models.Categories;
 
-public sealed record CategoryResponseDto(int Id, string Name);
+public sealed record CategoryResponseDto
+{
+    public int Id { get; init; }
+    public string Name { get; init; }
+}
