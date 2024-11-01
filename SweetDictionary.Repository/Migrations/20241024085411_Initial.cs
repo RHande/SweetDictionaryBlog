@@ -228,7 +228,7 @@ namespace SweetDictionary.Repository.Migrations
             migrationBuilder.InsertData(
                 table: "Categories",
                 columns: new[] { "CategoryId", "CreatedTime", "Category_Name", "UpdatedTime" },
-                values: new object[] { 1, new DateTime(2024, 10, 22, 19, 3, 58, 13, DateTimeKind.Local).AddTicks(4520), "Yazılım", null });
+                values: new object[] { 1, new DateTime(2024, 10, 24, 11, 54, 10, 949, DateTimeKind.Local).AddTicks(5660), "Yazılım", null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

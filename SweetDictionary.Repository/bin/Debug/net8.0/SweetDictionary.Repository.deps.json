@@ -622,7 +622,8 @@
       "Core/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.8",
-          "Microsoft.EntityFrameworkCore": "8.0.8"
+          "Microsoft.EntityFrameworkCore": "8.0.8",
+          "Microsoft.IdentityModel.Tokens": "6.35.0"
         },
         "runtime": {
           "Core.dll": {

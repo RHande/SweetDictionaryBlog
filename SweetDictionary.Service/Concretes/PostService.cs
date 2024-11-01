@@ -22,10 +22,11 @@ public class PostService : IPostService
         _postBusinessRules = postBusinessRules;
     }
 
-    public ReturnModel<PostResponseDto> Add(CreatePostRequestDto dto)
+    public ReturnModel<PostResponseDto> Add(CreatePostRequestDto dto, string userId)
     {
         Post createdPost = _mapper.Map<Post>(dto);
         createdPost.Id = Guid.NewGuid();
+        createdPost.AuthorId = userId;
         
         Post post = _postRepository.Add(createdPost);
         PostResponseDto response = _mapper.Map<PostResponseDto>(post);

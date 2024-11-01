@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SweetDictionary.Models.Entities;
 
-namespace Core.Repository;
+namespace SweetDictionary.Repository.Contexts;
 
 public class BaseDbContext : IdentityDbContext<User, IdentityRole, string>
 {

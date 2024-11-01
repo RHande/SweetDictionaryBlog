@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SweetDictionary.Models.Posts;
 using SweetDictionary.Service.Abstracts;
@@ -10,6 +12,7 @@ public class PostController(IPostService _postService):ControllerBase
 {
 
     [HttpGet("getall")]
+    [Authorize(Roles = "User")]
     public IActionResult GetALl()
     {
         var result = _postService.GetAll();
@@ -20,7 +23,9 @@ public class PostController(IPostService _postService):ControllerBase
     [HttpPost("Add")]
     public IActionResult Add([FromBody]CreatePostRequestDto dto)
     {
-        var result = _postService.Add(dto);
+        //Kullanıcının token id alanından alınması:
+        string authorId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value;
+        var result = _postService.Add(dto,authorId);
         return Ok(result);
     }
     

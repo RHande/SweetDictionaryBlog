@@ -1,28 +1,35 @@
 using Core.Repository;
+using Core.Tokens.Configuration;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using SweetDictionary.Models.Entities;
+using SweetDictionary.Repository;
+using SweetDictionary.Repository.Contexts;
 using SweetDictionary.Repository.Repositories.Abstracts;
 using SweetDictionary.Repository.Repositories.Concretes;
+using SweetDictionary.Service;
 using SweetDictionary.Service.Abstracts;
 using SweetDictionary.Service.Concretes;
 using SweetDictionary.Service.Mapings;
 using SweetDictionary.Service.Rules;
+using SweetDictionary.WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<IPostService, PostService>();
-builder.Services.AddScoped<IPostRepository, EfPostRepository>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<ICategoryRepository, EfCategoryRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<PostBusinessRules>();
-builder.Services.AddScoped<CategoryBusinessRules>();
-builder.Services.AddDbContext<BaseDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
+
+builder.Services.Configure<CustomTokenOptions>(builder.Configuration.GetSection("TokenOptions"));
+
+
+builder.Services.AddRepositoryDependencies(builder.Configuration);
+builder.Services.AddServiceDependencies();
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
 
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 builder.Services.AddIdentity<User, IdentityRole>(opt =>
     {
@@ -41,6 +48,25 @@ builder.Services.AddIdentity<User, IdentityRole>(opt =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<CustomTokenOptions>();
+builder.Services.AddAuthentication(opt =>
+{
+    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
+{
+    opt.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidIssuer = tokenOptions.Issuer,
+        ValidAudiences = [tokenOptions.Audience.First()],
+        ValidateIssuerSigningKey = true,
+        ValidateIssuer = true,
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.Zero,
+        IssuerSigningKey = SecurityKeyHelper.GetSecurityKey(tokenOptions.SecurityKey),
+    };
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -51,7 +77,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseExceptionHandler(_ => { });
 app.MapControllers();
 
 app.Run();

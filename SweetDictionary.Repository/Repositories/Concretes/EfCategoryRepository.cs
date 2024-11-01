@@ -1,6 +1,7 @@
 using Core.Repository;
 using Microsoft.EntityFrameworkCore;
 using SweetDictionary.Models.Entities;
+using SweetDictionary.Repository.Contexts;
 using SweetDictionary.Repository.Repositories.Abstracts;
 
 namespace SweetDictionary.Repository.Repositories.Concretes;

@@ -1,3 +1,5 @@
 namespace SweetDictionary.Models.Users;
 
-public sealed record LoginRequestDto (string Username, string Password);
+public sealed record LoginRequestDto (
+    string Email, 
+    string Password);
