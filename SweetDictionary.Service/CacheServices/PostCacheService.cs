@@ -2,23 +2,24 @@ using System.Text.Json;
 using Core.Exceptions;
 using Microsoft.Extensions.Caching.Distributed;
 using SweetDictionary.Models.Entities;
+using SweetDictionary.Models.Posts;
 
 namespace SweetDictionary.Service.CacheServices;
 
-public class PostCacheService (IDistributedCache cache)
+public sealed class PostCacheService (IDistributedCache cache)
 {
-    public async Task<Post> GetPostByIdAsync(Guid id)
+    public async Task<PostResponseDto?> GetPostByIdAsync(Guid id)
     {
         string cacheKey = $"Post({id})";
-        string cachedPost = await cache.GetStringAsync(cacheKey);
+        string? cachedPost = await cache.GetStringAsync(cacheKey);
         // "{'id': değeri, 'title': değeri }"
 
         if (string.IsNullOrEmpty(cachedPost))
         {
-            throw new BusinessException("İlgili post Cache de yok");
+            throw new BusinessException("İlgili post Cache'de yok");
         }
 
-        Post post = JsonSerializer.Deserialize<Post>(cachedPost);
+        PostResponseDto? post = JsonSerializer.Deserialize<PostResponseDto>(cachedPost);
         return post;
     }
     

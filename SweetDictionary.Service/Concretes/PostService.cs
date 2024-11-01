@@ -22,7 +22,7 @@ public class PostService : IPostService
         _postBusinessRules = postBusinessRules;
     }
 
-    public ReturnModel<PostResponseDto> Add(CreatePostRequestDto dto, string userId)
+    public Task<ReturnModel<PostResponseDto>> Add(CreatePostRequestDto dto, string userId)
     {
         Post createdPost = _mapper.Map<Post>(dto);
         createdPost.Id = Guid.NewGuid();
@@ -30,13 +30,13 @@ public class PostService : IPostService
         
         Post post = _postRepository.Add(createdPost);
         PostResponseDto response = _mapper.Map<PostResponseDto>(post);
-        return new ReturnModel<PostResponseDto>()
+        return Task.FromResult(new ReturnModel<PostResponseDto>()
         {
             Data = response,
             Message = Messages.PostAddedMessage,
             Status = 200,
             Success = true
-        };
+        });
     }
 
     public ReturnModel<List<PostResponseDto>> GetAll()
@@ -57,7 +57,7 @@ public class PostService : IPostService
         try
         {
             _postBusinessRules.PostIsPresent(id);
-            Post post = _postRepository.GetById(id);
+            Post? post = _postRepository.GetById(id);
             PostResponseDto response = _mapper.Map<PostResponseDto>(post);
             return new ReturnModel<PostResponseDto>()
             {
@@ -80,7 +80,7 @@ public class PostService : IPostService
         {
             _postBusinessRules.PostIsPresent(dto.Id);
 
-            Post post = _postRepository.GetById(dto.Id);
+            Post? post = _postRepository.GetById(dto.Id);
 
             post.Title = dto.Title;
             post.Content = dto.Content;
@@ -104,7 +104,10 @@ public class PostService : IPostService
 
     public ReturnModel<string> Delete(Guid id)
     {
-        Post post = _postRepository.GetById(id);
+        _postBusinessRules.PostIsPresent(id);
+        
+        
+        Post? post = _postRepository.GetById(id);
         Post deletedPost = _postRepository.Delete(post);
         return new ReturnModel<string>()
         {

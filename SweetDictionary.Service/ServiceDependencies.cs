@@ -23,6 +23,14 @@ public static class ServiceDependencies
 
         services.AddFluentValidationAutoValidation();
         services.AddValidatorsFromAssemblies([Assembly.GetExecutingAssembly()]);
+        
+        services.AddStackExchangeRedisCache(options =>
+        {
+            options.Configuration = "localhost:6379";
+            options.InstanceName = "SweetDictionary";
+        });
+        
+        
         return services;
     }
 }
