@@ -13,4 +13,13 @@ public class CategoryBusinessRules(ICategoryRepository _categoryRepository)
             throw new NotFoundException($"Category not found according to the given id : {id}");
         }
     }
+    
+    public void CategoryListIsNotEmpty()
+    {
+        var categories = _categoryRepository.GetAll();
+        if (categories.Count == 0)
+        {
+            throw new NotFoundException("There is no category in the system.");
+        }
+    }
 }

@@ -155,3 +155,8 @@
 /Users/hande/RiderProjects/SweetDictionary/SweetDictionary.WebApi/bin/Debug/net8.0/FluentValidation.AspNetCore.dll
 /Users/hande/RiderProjects/SweetDictionary/SweetDictionary.WebApi/bin/Debug/net8.0/FluentValidation.DependencyInjectionExtensions.dll
 /Users/hande/RiderProjects/SweetDictionary/SweetDictionary.WebApi/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.WebApi/bin/Debug/net8.0/Microsoft.Extensions.Caching.StackExchangeRedis.dll
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.WebApi/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.WebApi/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.WebApi/bin/Debug/net8.0/Pipelines.Sockets.Unofficial.dll
+/Users/hande/RiderProjects/SweetDictionary/SweetDictionary.WebApi/bin/Debug/net8.0/StackExchange.Redis.dll

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SweetDictionary.Service")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e30f4f691f10afb671986effbbb71598084a9d9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a686bdab73e31dfc9f207e7a91fe30402d69453e")]
 [assembly: System.Reflection.AssemblyProductAttribute("SweetDictionary.Service")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SweetDictionary.Service")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
