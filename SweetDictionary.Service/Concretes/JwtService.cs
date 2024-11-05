@@ -30,7 +30,6 @@ public class JwtService : IJwtService
         JwtSecurityToken jwtSecurityToken = new JwtSecurityToken(
             issuer: _customTokenOptions.Issuer,
             expires: accessTokenExpiration,
-            notBefore: DateTime.Now,
             claims: await GetClaims(user,_customTokenOptions.Audience),
             signingCredentials: signingCredentials
         );
@@ -47,7 +46,7 @@ public class JwtService : IJwtService
     {
         var userList = new List<Claim>
         {
-            new Claim(ClaimTypes.NameIdentifier,user.Id),
+            new Claim(ClaimTypes.NameIdentifier, user.Id),
             new Claim("email",user.Email),
             new Claim(ClaimTypes.Name, user.UserName),
         };

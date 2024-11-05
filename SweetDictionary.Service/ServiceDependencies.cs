@@ -1,6 +1,7 @@
 using System.Reflection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using SweetDictionary.Service.Abstracts;
 using SweetDictionary.Service.Concretes;
@@ -17,6 +18,7 @@ public static class ServiceDependencies
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IJwtService, JwtService>();
         services.AddScoped<IAuthenticationService, AuthenticationService>();
+        services.AddScoped<IRoleService, RoleService>();
         services.AddScoped<PostBusinessRules>();
         services.AddScoped<CategoryBusinessRules>();
         services.AddAutoMapper(Assembly.GetExecutingAssembly());

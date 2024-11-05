@@ -2,18 +2,12 @@ using Core.Repository;
 using Core.Tokens.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SweetDictionary.Models.Entities;
 using SweetDictionary.Repository;
 using SweetDictionary.Repository.Contexts;
-using SweetDictionary.Repository.Repositories.Abstracts;
-using SweetDictionary.Repository.Repositories.Concretes;
 using SweetDictionary.Service;
-using SweetDictionary.Service.Abstracts;
-using SweetDictionary.Service.Concretes;
 using SweetDictionary.Service.Mapings;
-using SweetDictionary.Service.Rules;
 using SweetDictionary.WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,12 +15,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 
-builder.Services.Configure<CustomTokenOptions>(builder.Configuration.GetSection("TokenOptions"));
+builder.Services.Configure<CustomTokenOptions>(builder.Configuration.GetSection("TokenOption"));
 
 
 builder.Services.AddRepositoryDependencies(builder.Configuration);
 builder.Services.AddServiceDependencies();
-builder.Services.AddAutoMapper(typeof(MappingProfiles));
+builder.Services.AddAutoMapper(typeof(PostProfiles));
+builder.Services.AddAutoMapper(typeof(CategoryProfiles));
 
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
@@ -34,10 +29,10 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddIdentity<User, IdentityRole>(opt =>
     {
         opt.User.RequireUniqueEmail = true;
-        opt.Password.RequireDigit = true;
-        opt.Password.RequireLowercase = true;
-        opt.Password.RequireUppercase = true;
         opt.Password.RequireNonAlphanumeric = false;
+        opt.Password.RequiredLength = 6; // Example, adjust as needed
+        opt.Password.RequireDigit = false; // Example
+        opt.Password.RequireUppercase = false;
     })
     .AddEntityFrameworkStores<BaseDbContext>();
 
@@ -48,7 +43,7 @@ builder.Services.AddIdentity<User, IdentityRole>(opt =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<CustomTokenOptions>();
+var tokenOptions = builder.Configuration.GetSection("TokenOption").Get<CustomTokenOptions>();
 builder.Services.AddAuthentication(opt =>
 {
     opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -58,7 +53,7 @@ builder.Services.AddAuthentication(opt =>
     opt.TokenValidationParameters = new TokenValidationParameters()
     {
         ValidIssuer = tokenOptions.Issuer,
-        ValidAudiences = [tokenOptions.Audience.First()],
+        ValidAudience = tokenOptions.Audience[0],
         ValidateIssuerSigningKey = true,
         ValidateIssuer = true,
         ValidateLifetime = true,
@@ -76,11 +71,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
+
+app.UseExceptionHandler(_ => { });
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseExceptionHandler(_ => { });
 app.MapControllers();
 
 app.Run();

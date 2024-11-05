@@ -15,4 +15,13 @@ public class PostBusinessRules(IPostRepository _postRepository)
         
         return true;
     }
+    
+    public void PostTitleIsUnique(string title)
+    {
+        var post = _postRepository.GetAll(x => x.Title == title);
+        if (post.Count > 0)
+        {
+            throw new BusinessException("Post title is must be unique");
+        }
+    }
 }

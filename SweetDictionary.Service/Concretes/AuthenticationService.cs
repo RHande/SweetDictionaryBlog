@@ -18,8 +18,8 @@ public class AuthenticationService : IAuthenticationService
     public async Task<TokenResponseDto> RegisterByUserAsync(RegisterRequestDto registerDto)
     {
         var registerResponse = await _userService.CreateUserAsync(registerDto);
-        var tokenResponse = _jwtService.CreateToken(registerResponse);
-        return await tokenResponse;
+        var tokenResponse = await _jwtService.CreateToken(registerResponse);
+        return tokenResponse;
     }
 
     public async Task<TokenResponseDto> LoginByUserAsync(LoginRequestDto loginDto)

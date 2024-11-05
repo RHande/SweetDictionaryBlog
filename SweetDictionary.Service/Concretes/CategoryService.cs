@@ -40,6 +40,7 @@ public class CategoryService : ICategoryService
 
     public ReturnModel<List<CategoryResponseDto>> GetAll()
     {
+        _categoryBusinessRules.CategoryListIsNotEmpty();
         List<Category> categories = _categoryRepository.GetAll();
         List<CategoryResponseDto> response = _mapper.Map<List<CategoryResponseDto>>(categories);
         return new ReturnModel<List<CategoryResponseDto>>()
@@ -53,11 +54,8 @@ public class CategoryService : ICategoryService
 
     public ReturnModel<CategoryResponseDto> GetById(int id)
     {
-
-        try
-        {
             _categoryBusinessRules.CategoryIsPresent(id);
-            Category category = _categoryRepository.GetById(id);
+            Category? category = _categoryRepository.GetById(id);
             CategoryResponseDto response = _mapper.Map<CategoryResponseDto>(category);
             return new ReturnModel<CategoryResponseDto>()
             {
@@ -66,20 +64,12 @@ public class CategoryService : ICategoryService
                 Status = 200,
                 Success = true
             };
-        }
-        catch (Exception e)
-        {
-            return ExceptionHandler<CategoryResponseDto>.HandleException(new NotFoundException(e.Message));
-        }
-        
     }
 
     public ReturnModel<CategoryResponseDto> Update(UpdateCategoryRequestDto dto)
     {
-        try
-        {
             _categoryBusinessRules.CategoryIsPresent(dto.Id);
-            Category category = _categoryRepository.GetById(dto.Id);
+            Category? category = _categoryRepository.GetById(dto.Id);
             category.Name = dto.Name;
             _categoryRepository.Update(category);
             CategoryResponseDto response = _mapper.Map<CategoryResponseDto>(category);
@@ -90,18 +80,12 @@ public class CategoryService : ICategoryService
                 Status = 200,
                 Success = true
             };
-        }
-        catch (Exception e)
-        {
-            return ExceptionHandler<CategoryResponseDto>.HandleException(e);
-        }
     }
 
     public ReturnModel<string> Delete(int id)
     {
-        try
-        {
-            Category category = _categoryRepository.GetById(id);
+        
+            Category? category = _categoryRepository.GetById(id);
             Category deletedCategory = _categoryRepository.Delete(category);
             return new ReturnModel<string>()
             {
@@ -110,11 +94,6 @@ public class CategoryService : ICategoryService
                 Status = 200,
                 Success = true
             };
-        }
-        catch (Exception e)
-        {
-            return ExceptionHandler<string>.HandleException(e);
-        }
     }
 
     public ReturnModel<List<CategoryResponseDto>> GetByName(string name)

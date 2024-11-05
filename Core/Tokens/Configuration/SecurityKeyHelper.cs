@@ -3,7 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Core.Tokens.Configuration;
 
-public class SecurityKeyHelper
+public static class SecurityKeyHelper
 {
     public static SecurityKey GetSecurityKey(string securityKey)
     {

@@ -6,7 +6,7 @@ namespace SweetDictionary.Service.Abstracts;
 
 public interface IUserService
 {
-    Task<User> CreateUserAsync(RegisterRequestDto dto);
+    Task<User> CreateUserAsync(RegisterRequestDto registerRequestDto);
     Task<User> GetByEmailAsync(string email);
     Task<User> LoginAsync(LoginRequestDto dto);
     Task<string> DeleteAsync(string id);

@@ -9,7 +9,7 @@ using SweetDictionary.Service.Rules;
 
 namespace SweetDictionary.Service.Concretes;
 
-public class PostService : IPostService
+public sealed class PostService : IPostService
 {
     private readonly IPostRepository _postRepository;
     private readonly IMapper _mapper;
@@ -22,21 +22,24 @@ public class PostService : IPostService
         _postBusinessRules = postBusinessRules;
     }
 
-    public Task<ReturnModel<PostResponseDto>> Add(CreatePostRequestDto dto, string userId)
+    public async Task<ReturnModel<PostResponseDto>> Add(CreatePostRequestDto dto, string authorId)
     {
+        _postBusinessRules.PostTitleIsUnique(dto.Title);
+        
+        
         Post createdPost = _mapper.Map<Post>(dto);
         createdPost.Id = Guid.NewGuid();
-        createdPost.AuthorId = userId;
+        createdPost.AuthorId = authorId;
         
         Post post = _postRepository.Add(createdPost);
         PostResponseDto response = _mapper.Map<PostResponseDto>(post);
-        return Task.FromResult(new ReturnModel<PostResponseDto>()
+        return new ReturnModel<PostResponseDto>()
         {
             Data = response,
             Message = Messages.PostAddedMessage,
             Status = 200,
             Success = true
-        });
+        };
     }
 
     public ReturnModel<List<PostResponseDto>> GetAll()
@@ -54,8 +57,6 @@ public class PostService : IPostService
 
     public ReturnModel<PostResponseDto> GetById(Guid id)
     {
-        try
-        {
             _postBusinessRules.PostIsPresent(id);
             Post? post = _postRepository.GetById(id);
             PostResponseDto response = _mapper.Map<PostResponseDto>(post);
@@ -66,18 +67,11 @@ public class PostService : IPostService
                 Status = 200,
                 Success = true
             };
-        }
-        catch (Exception e)
-        {
-            return ExceptionHandler<PostResponseDto>.HandleException(e);
-        }
        
     }
 
     public ReturnModel<PostResponseDto> Update(UpdatePostRequestDto dto)
     {
-        try
-        {
             _postBusinessRules.PostIsPresent(dto.Id);
 
             Post? post = _postRepository.GetById(dto.Id);
@@ -95,11 +89,6 @@ public class PostService : IPostService
                 Status = 200,
                 Success = true
             };
-        }
-        catch (Exception e)
-        {
-            return ExceptionHandler<PostResponseDto>.HandleException(e);
-        }
     }
 
     public ReturnModel<string> Delete(Guid id)

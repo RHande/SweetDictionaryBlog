@@ -6,31 +6,24 @@ using SweetDictionary.Service.Abstracts;
 
 namespace SweetDictionary.Service.Concretes;
 
-public class UserService : IUserService
+public class UserService(UserManager<User> userManager) : IUserService
 {
-    private readonly UserManager<User> _userManager;
-
-    public UserService(UserManager<User> userManager)
+    public async Task<User> CreateUserAsync(RegisterRequestDto registerRequestDto)
     {
-        _userManager = userManager;
-    }
-
-
-    public async Task<User> CreateUserAsync(RegisterRequestDto dto)
-    {
-        User user = new User
+        
+        User user = new User()
         {
-            Email = dto.Email,
-            UserName = dto.Username,
-            BirthDate = dto.BirthDate,
+            Email = registerRequestDto.Email,
+            UserName = registerRequestDto.Username,
+            BirthDate = registerRequestDto.BirthDate,
         };
 
-        var result = await _userManager.CreateAsync(user, dto.Password);
+        var result = await userManager.CreateAsync(user, registerRequestDto.Password);
         if (!result.Succeeded)
         {
             throw new Exception("User could not be created");
         }
-        var role = await _userManager.AddToRoleAsync(user, "User");
+        var role = await userManager.AddToRoleAsync(user, "User");
         if (!role.Succeeded)
         {
             throw new BusinessException(role.Errors.First().Description);
@@ -41,7 +34,7 @@ public class UserService : IUserService
 
     public async Task<User> GetByEmailAsync(string email)
     {
-        var user = await _userManager.FindByEmailAsync(email);
+        var user = await userManager.FindByEmailAsync(email);
         if (user is null)
         {
             throw new NotFoundException("User not found");
@@ -52,10 +45,10 @@ public class UserService : IUserService
 
     public async Task<User> LoginAsync(LoginRequestDto dto)
     {
-        var userExist = await _userManager.FindByEmailAsync(dto.Email);
+        var userExist = await userManager.FindByEmailAsync(dto.Email);
         UserIsPresent(userExist);
         
-        var result = await _userManager.CheckPasswordAsync(userExist, dto.Password);
+        var result = await userManager.CheckPasswordAsync(userExist, dto.Password);
         if (!result)
         {
             throw new Exception("Password is wrong");
@@ -66,21 +59,21 @@ public class UserService : IUserService
 
     public async Task<string> DeleteAsync(string id)
     {
-        var user = await _userManager.FindByIdAsync(id);
+        var user = await userManager.FindByIdAsync(id);
         UserIsPresent(user);
-        await _userManager.DeleteAsync(user);
+        await userManager.DeleteAsync(user);
         return "User deleted successfully";
     }
 
     public async Task<User> UpdateAsync(string id, UpdateUserRequestDto dto)
     {
-        var user = await _userManager.FindByIdAsync(id);
+        var user = await userManager.FindByIdAsync(id);
         UserIsPresent(user);
         
         user.UserName = dto.Username;
         user.BirthDate = dto.BirthDate;
         
-        var result = await _userManager.UpdateAsync(user);
+        var result = await userManager.UpdateAsync(user);
         if (!result.Succeeded)
         {
             throw new BusinessException(result.Errors.First().Description);
@@ -91,10 +84,10 @@ public class UserService : IUserService
 
     public async Task<string> ChangePasswordAsync(string id, ChangePasswordRequestDto dto)
     {
-        var user = await _userManager.FindByIdAsync(id);
+        var user = await userManager.FindByIdAsync(id);
         UserIsPresent(user);
         
-        var result = await _userManager.ChangePasswordAsync(user, dto.OldPassword, dto.NewPassword);
+        var result = await userManager.ChangePasswordAsync(user, dto.OldPassword, dto.NewPassword);
         if (!result.Succeeded)
         {
             throw new BusinessException(result.Errors.First().Description);

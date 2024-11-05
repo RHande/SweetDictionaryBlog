@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SweetDictionary.Models.Categories;
 using SweetDictionary.Service.Abstracts;
@@ -20,6 +21,7 @@ public class CategoryController(ICategoryService _categoryService) : ControllerB
     
     
     [HttpPost("Add")]
+    [Authorize(Roles = "Admin")]
     public IActionResult Add([FromBody]CreateCategoryRequestDto dto)
     {
         var result = _categoryService.Add(dto);
@@ -36,6 +38,7 @@ public class CategoryController(ICategoryService _categoryService) : ControllerB
     
     
     [HttpPut("update")]
+    [Authorize(Roles = "Admin")]
     public IActionResult Update([FromBody] UpdateCategoryRequestDto dto)
     {
         var result = _categoryService.Update(dto);
@@ -44,6 +47,7 @@ public class CategoryController(ICategoryService _categoryService) : ControllerB
     
     
     [HttpDelete("delete/{id:int}")]
+    [Authorize(Roles = "Admin")]
     public IActionResult Delete([FromRoute]int id)
     {
         var result = _categoryService.Delete(id);

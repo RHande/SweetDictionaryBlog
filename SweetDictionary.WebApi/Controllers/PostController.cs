@@ -4,10 +4,13 @@ using Microsoft.AspNetCore.Mvc;
 using SweetDictionary.Models.Posts;
 using SweetDictionary.Service.Abstracts;
 
+
+
 namespace SweetDictionary.WebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class PostController(IPostService _postService):ControllerBase
 {
 
@@ -19,14 +22,17 @@ public class PostController(IPostService _postService):ControllerBase
         return Ok(result);
     }
     
-    
-    [HttpPost("Add")]
-    public IActionResult Add([FromBody]CreatePostRequestDto dto)
+    [HttpPost("add")]
+    public async Task<IActionResult> Add([FromBody]CreatePostRequestDto dto)
     {
         //Kullanıcının token id alanından alınması:
-        string authorId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value;
-        var result = _postService.Add(dto,authorId);
-        return Ok(result);
+       string? authorId = HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+       if (authorId == null)
+       {
+           return Unauthorized("Author ID not found in token."); 
+       } 
+       var result = await _postService.Add(dto, authorId);
+       return Ok(result);
     }
     
     
@@ -59,7 +65,7 @@ public class PostController(IPostService _postService):ControllerBase
     }
     
     
-    [HttpGet("getallbyauthorid/{id:long}")]
+    [HttpGet("getallbyauthorid/{id}")]
     public IActionResult GetAllByAuthorId(string id)
     {
         var result = _postService.GetAllByAuthorId(id);

@@ -5,7 +5,7 @@ namespace SweetDictionary.Service.Abstracts;
 
 public interface IPostService
 {
-    Task<ReturnModel<PostResponseDto>> Add(CreatePostRequestDto dto, string userId);
+    Task<ReturnModel<PostResponseDto>> Add(CreatePostRequestDto dto, string authorId);
     ReturnModel<List<PostResponseDto>> GetAll();
     ReturnModel<PostResponseDto> GetById(Guid id);
     
