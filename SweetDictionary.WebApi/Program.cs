@@ -22,6 +22,7 @@ builder.Services.AddRepositoryDependencies(builder.Configuration);
 builder.Services.AddServiceDependencies();
 builder.Services.AddAutoMapper(typeof(PostProfiles));
 builder.Services.AddAutoMapper(typeof(CategoryProfiles));
+builder.Services.AddAutoMapper(typeof(CommentProfiles));
 
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
